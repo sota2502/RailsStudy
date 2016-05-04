@@ -15,6 +15,14 @@
   <%= simple_format(h(@mythread.body)) %>
 </p>
 
+<% unless @bookmark %>
+  <%= form_tag('/bookmarks', :method => :post) do |f| %>
+    <%= hidden_field_tag "mythread_id", @mythread.id %>
+    <div class="actions"><%= submit_tag "Bookmark" %></div>
+  <% end %>
+<% end %>
+
+
 <h2>Comment List</h2>
 <table>
   <tbody>

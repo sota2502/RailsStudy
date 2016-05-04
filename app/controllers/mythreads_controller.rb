@@ -14,6 +14,7 @@ class MythreadsController < ApplicationController
   def show
     @comments = Comment.where(mythread_id: params[:id])
     @comment  = Comment.new
+    @bookmark = Bookmark.find_by(user_id: current_user.id, mythread_id: params[:id])
   end
 
   # GET /mythreads/new

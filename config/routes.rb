@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :mythreads, only: [:index, :destroy]
   end
 
+  resources :bookmarks, only: [:index, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
