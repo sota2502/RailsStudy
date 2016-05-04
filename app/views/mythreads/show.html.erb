@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @mythread.user.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @mythread.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= simple_format(h(@mythread.body)) %>
+</p>
+
+<%= link_to 'Edit', edit_mythread_path(@mythread) %> |
+<%= link_to 'Back', mythreads_path %>

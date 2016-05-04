@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :mythreads
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     registrations: 'users/registrations',
   }
+  root to: "mythreads#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
