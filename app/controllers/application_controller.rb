@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  rescue_from Exception, with: :render_internal_server_error
+  # rescue_from Exception, with: :render_internal_server_error
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   rescue_from ActionController::RoutingError, with: :render_not_found
 

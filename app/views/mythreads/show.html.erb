@@ -15,5 +15,29 @@
   <%= simple_format(h(@mythread.body)) %>
 </p>
 
+<h2>Comment List</h2>
+<table>
+  <tbody>
+    <% @comments.each do |comment| %>
+      <p>
+        <strong>Author:</strong>
+        <%= comment.user.name %>
+      </p>
+      <p>
+        <strong>Body:</strong>
+        <%= simple_format(h(comment.body)) %>
+      </p>
+      <% if comment.user.id == current_user.id %>
+      <p>
+        <%= link_to 'Edit', edit_mythread_comment_path(id: comment.id, mythread_id: comment.mythread_id) %>
+        <%= link_to 'Destroy', [@mythread, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+      </p>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to 'New Comment', new_mythread_comment_path(@mythread) %></p>
+
 <%= link_to 'Edit', edit_mythread_path(@mythread) %> |
 <%= link_to 'Back', mythreads_path %>

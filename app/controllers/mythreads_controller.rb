@@ -12,6 +12,8 @@ class MythreadsController < ApplicationController
   # GET /mythreads/1
   # GET /mythreads/1.json
   def show
+    @comments = Comment.where(mythread_id: params[:id])
+    @comment  = Comment.new
   end
 
   # GET /mythreads/new

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :mythreads
+  resources :mythreads do
+    resources :comments
+  end
   devise_for :users, controllers: {
     sessions:      'users/sessions',
     registrations: 'users/registrations',
