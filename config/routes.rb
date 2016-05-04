@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   }
   root to: "mythreads#index"
 
+  namespace :admins do
+    resources :items, only: [:index]
+    resources :users, only: [:index, :destroy]
+    resources :mythreads, only: [:index, :destroy]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mythread List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mythreads.each do |mythread| %>
+      <tr>
+        <td><%= mythread.title %></td>
+        <td><%= mythread.body %></td>
+        <td><%= link_to 'Destroy', ['admins', mythread], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
