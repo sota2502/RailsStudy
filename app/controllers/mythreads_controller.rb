@@ -78,7 +78,6 @@ class MythreadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mythread_params
-      params[:mythread][:user_id] = current_user.id
-      params.require(:mythread).permit(:title, :body, :user_id)
+      params.require(:mythread).permit(:title, :body).merge({user_id: current_user.id})
     end
 end
