@@ -5,7 +5,11 @@ p
   strong
     'Author:
   = @mythread.user.name
-
+  - if current_user.id != @mythread.user.id
+    - if @follow.present?
+      input type="button" class="JS_toggle" value="unfollow" data-id=@mythread.user.id
+    - else
+      input type="button" class="JS_toggle" value="follow" data-id=@mythread.user.id
 p
   strong
     'Title:
