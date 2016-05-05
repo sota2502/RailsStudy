@@ -30,6 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'devise'
 
+gem 'composite_primary_keys'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

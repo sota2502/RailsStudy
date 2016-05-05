@@ -15,6 +15,7 @@ class MythreadsController < ApplicationController
     @comments = Comment.where(mythread_id: params[:id])
     @comment  = Comment.new
     @bookmark = Bookmark.find_by(user_id: current_user.id, mythread_id: params[:id])
+    @follow   = Follow.find_by(user_id: current_user.id, followed_id: @mythread.user.id)
   end
 
   # GET /mythreads/new
