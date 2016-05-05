@@ -1,0 +1,49 @@
+p id="notice"
+  = notice
+
+p
+  strong
+    'Author:
+  = @mythread.user.name
+
+p
+  strong
+    'Title:
+  = @mythread.title
+
+p
+  strong
+    'Body:
+  = simple_format(h(@mythread.body))
+
+- unless @bookmark
+  = form_tag '/bookmarks', :method => :post do
+    = hidden_field_tag "bookmark[mythread_id]", @mythread.id
+    div class="actions"
+      = submit_tag "Bookmark"
+
+
+h2
+  Comment List
+table
+  tbody
+    - @comments.each do |comment|
+      p
+        strong
+          'Author:
+        = comment.user.name
+      p
+        strong
+          'Body:
+        = simple_format(h(comment.body))
+      - if comment.user.id == current_user.id
+      p
+        = link_to 'Edit', edit_mythread_comment_path(id: comment.id, mythread_id: comment.mythread_id)
+        = link_to 'Destroy', [@mythread, comment], method: :delete, data: { confirm: 'Are you sure?' }
+
+p
+  = link_to 'New Comment', new_mythread_comment_path(@mythread)
+
+= link_to 'Edit', edit_mythread_path(@mythread)
+'|
+= link_to 'Back', mythreads_path

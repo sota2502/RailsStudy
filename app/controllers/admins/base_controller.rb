@@ -4,7 +4,7 @@ class Admins::BaseController < ApplicationController
   private
     def authenticate_admin
       user = authenticate_user!
-      unless user
+      unless user.present?
         redirect_to new_user_session_url
         return
       end

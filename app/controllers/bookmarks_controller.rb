@@ -35,11 +35,10 @@ class BookmarksController < ApplicationController
     end
 
     def set_mythread
-      @mythread = Mythread.find(params[:mythread_id])
+      @mythread = Mythread.find(params[:bookmark][:mythread_id])
     end
 
     def bookmark_params
-      params[:bookmark] = {user_id: current_user.id, mythread_id: params[:mythread_id] }
-      params.require(:bookmark).permit(:user_id, :mythread_id)
+      params.require(:bookmark).permit(:mythread_id).merge({user_id: current_user.id})
     end
 end
