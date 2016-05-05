@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Mythreads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mythreads.each do |mythread| %>
+      <tr>
+        <td><%= mythread.title %></td>
+        <td><%= mythread.body %></td>
+        <td><%= link_to 'Show', mythread %></td>
+        <% if mythread.user_id === current_user.id %>
+          <td><%= link_to 'Edit', edit_mythread_path(mythread) %></td>
+          <td><%= link_to 'Destroy', mythread, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mythread', new_mythread_path %>
