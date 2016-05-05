@@ -31,6 +31,8 @@ class MythreadsController < ApplicationController
   def create
     @mythread = Mythread.new(mythread_params)
 
+    PostMailer.post_email(current_user, @mythread).deliver
+
     respond_to do |format|
       if @mythread.save
         format.html { redirect_to @mythread, notice: 'Mythread was successfully created.' }
