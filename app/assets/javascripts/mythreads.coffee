@@ -3,14 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('.JS_toggle').click (evt) ->
-    _self = $(this)
-    id = _self.data('id')
+  $('.js-toggle').click (e) ->
+    element = $(this)
+    id = element.data('id')
     $.post('/follows/toggle/' + id)
-    if _self.attr('value') == 'follow'
+    if element.attr('value') == 'follow'
       label = 'unfollow'
     else
       label = 'follow'
     
-    _self.attr('value', label)
+    element.attr('value', label)
     

@@ -32,7 +32,7 @@ class MythreadsController < ApplicationController
   def create
     @mythread = Mythread.new(mythread_params)
 
-    PostMailer.post_email(current_user, @mythread).deliver
+    PostMailer.post_email(current_user, @mythread).deliver_now
 
     respond_to do |format|
       if @mythread.save

@@ -1,14 +1,14 @@
 class FollowsController < ApplicationController
   # POST /follows/toggle/:id
   def toggle
-    follows = Follow.find_by(user_id: current_user.id, followed_id: params[:id])
-    if follows
-      follows.destroy
+    follow = find_or_initialized_by(user_id: current_user.id, followed_id: params[:id])
+
+    if follow.new_record?
+      status = follow.save ? 'ok' : 'ng'
     else
-      new_follows = Follow.new( user_id: current_user.id, followed_id: params[:id] )
-      new_follows.save
+      status = follow.destroy ? 'ok' : 'ng'
     end
     
-    render json: { status: 'ok' }
+    render json: { status: status }
   end
 end
